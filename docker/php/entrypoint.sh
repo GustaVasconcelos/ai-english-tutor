@@ -22,7 +22,7 @@ if ! grep -q "APP_KEY=" .env || [ -z "$(grep APP_KEY= .env | cut -d '=' -f2)" ];
 fi
 
 echo "🗄 Rodando migrations..."
-php artisan migrate --force
+php artisan migrate --force --seed
 
 if [ ! -L "public/storage" ]; then
     echo "🔗 Criando storage link..."

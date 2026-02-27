@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 
 use App\Interfaces\LearningProfileRepositoryInterface;
 use App\Repositories\LearningProfileRepository;
+use App\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
+use App\Interfaces\AgentConversationMessageRepositoryInterface;
+use App\Repositories\AgentConversationMessageRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +20,15 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             LearningProfileRepositoryInterface::class,
-            LearningProfileRepository::class
+            LearningProfileRepository::class,
+        );
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class,
+        );
+        $this->app->bind(
+            AgentConversationMessageRepositoryInterface::class,
+            AgentConversationMessageRepository::class,
         );
     }
 
