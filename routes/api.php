@@ -1,16 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Ai\Agents\EnglishTutor;
+use App\Http\Controllers\SetupController;
 
-Route::get('/ping', function () {
-    return response()->json([
-        'pong' => 'ok'
-    ]);
-});
-
-Route::get('/ai-test', function () {
-    $response = EnglishTutor::make()->prompt('Explique o verbo "to be"');
-
-    return (string)$response;
+Route::prefix('setup')->group(function () {
+    Route::get('/', [SetupController::class, 'show']);
+    Route::post('/', [SetupController::class, 'store']);
 });
